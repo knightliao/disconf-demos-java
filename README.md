@@ -1,4 +1,5 @@
-disconf-demos-java [![Build Status](https://travis-ci.org/knightliao/disconf-demos-java.svg?branch=dev)](https://travis-ci.org/knightliao/disconf-demos-java) [![Coverage Status](https://coveralls.io/repos/knightliao/disconf-demos-java/badge.svg?branch=dev&service=github)](https://coveralls.io/github/knightliao/disconf-demos-java?branch=dev)
+disconf-demos-java [![Build Status](https://travis-ci.org/knightliao/disconf-demos-java.svg?branch=dev)](https://travis-ci.org/knightliao/disconf-demos-java) 
+[![Coverage Status](https://coveralls.io/repos/knightliao/disconf-demos-java/badge.svg?branch=dev&service=github)](https://coveralls.io/github/knightliao/disconf-demos-java?branch=dev)
 =======
 
 several demos for disconf java client.
