@@ -1,0 +1,8 @@
+/.project
+/.settings
+/target
+/pom.xml.releaseBackup
+/*.iml
+/.idea
+/.DS_Store
+.idea
