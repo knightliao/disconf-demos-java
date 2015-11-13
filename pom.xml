@@ -16,4 +16,106 @@
         <module>disconf-standalone-dubbo-demo</module>
     </modules>
 
+    <!-- TEST 報告 mvn site -->
+    <reporting>
+        <plugins>
+
+            <!-- checkstyle -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.9.1</version>
+            </plugin>
+
+            <!-- pmd -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <aggregate>true</aggregate>
+                    <targetJdk>1.6</targetJdk>
+                </configuration>
+            </plugin>
+
+            <!-- 定义Site生成的Index -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.7</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>index</report>
+                            <report>summary</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+            <!-- site UT 插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <aggregate>true</aggregate>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <!-- 单测RUN一次，其它地方都可以用 -->
+                            <report>report-only</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
+            <!-- 覆盖率 -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <aggregate>true</aggregate>
+                    <formats>
+                        <format>xml</format>
+                        <format>html</format>
+                    </formats>
+                    <instrumentation>
+                        <excludes>
+                            <exclude>**/*Proto.class</exclude>
+                            <exclude>**/*Proto$*.class</exclude>
+                            <exclude>**/*Test.class</exclude>
+                            <exclude>**/*Controller.class</exclude>
+                            <exclude>**/*Vo.class</exclude>
+                            <exclude>**/*Form.class</exclude>
+                        </excludes>
+                    </instrumentation>
+                    <check/>
+                </configuration>
+            </plugin>
+
+            <!-- findbugs -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>2.5.2</version>
+                <configuration>
+                    <aggregate>true</aggregate>
+
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5</version>
+            </plugin>
+
+        </plugins>
+    </reporting>
+
 </project>
