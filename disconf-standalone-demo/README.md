@@ -58,10 +58,8 @@ com.example.disconf.demo.config.Coefficients.discount
 
 - com.example.disconf.demo.config.JedisConfig: 配置类与回调类 是同一个类的示例
 - com.example.disconf.demo.service.callbacks.*: 配置类与配置项 的回调类示例
-    - AutoServiceCallback: 多个配置文件同一个回调类
     - RemoteServiceUpdateCallback:
     - SimpleRedisServiceUpdateCallback
-    - TestJsonConfigCallback
     - TestXmlConfigCallback: XML的回调函数
 
 #### 第三步：使用起来
@@ -70,3 +68,109 @@ com.example.disconf.demo.config.Coefficients.discount
 
 - 支持spring注解式(bean)
 - 支持静态类(非bean)
+
+### XML配置方式
+
+#### 第一步：增加XML配置
+
+需要自动reload的
+
+- autoconfig.properties
+- autoconfig2.properties
+- myserver_slave.properties
+- testJson.json
+- testXml2.xml
+
+不需要自动reload的：
+
+- myserver.properties
+
+
+    <!-- 使用托管方式的disconf配置(无代码侵入, 配置更改会自动reload)-->
+    <bean id="configproperties_disconf"
+          class="com.baidu.disconf.client.addons.properties.ReloadablePropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:/autoconfig.properties</value>
+                <value>classpath:/autoconfig2.properties</value>
+                <value>classpath:/myserver_slave.properties</value>
+                <value>classpath:/testJson.json</value>
+                <value>testXml2.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="propertyConfigurer"
+          class="com.baidu.disconf.client.addons.properties.ReloadingPropertyPlaceholderConfigurer">
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="propertiesArray">
+            <list>
+                <ref bean="configproperties_disconf"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 使用托管方式的disconf配置(无代码侵入, 配置更改不会自动reload)-->
+    <bean id="configproperties_no_reloadable_disconf"
+          class="com.baidu.disconf.client.addons.properties.ReloadablePropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>myserver.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="propertyConfigurerForProject1"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="propertiesArray">
+            <list>
+                <ref bean="configproperties_no_reloadable_disconf"/>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="autoService" class="com.example.disconf.demo.service.AutoService">
+        <property name="auto" value="${auto=100}"/>
+    </bean>
+
+    <bean id="autoService2" class="com.example.disconf.demo.service.AutoService2">
+        <property name="auto2" value="${auto2}"/>
+    </bean>
+
+#### 第二步：撰写相应的bean类
+
+- com.example.disconf.demo.service.AutoService
+- com.example.disconf.demo.service.AutoService2
+
+#### 第三步：回调类
+
+- com.example.disconf.demo.service.callbacks.*: 
+    - AutoServiceCallback: 
+    - TestJsonConfigCallback
+    
+示例：
+
+    /**
+     * 这是 autoconfig.properties 的回调函数类
+     * <p/>
+     * Created by knightliao on 15/3/21.
+     */
+    @Service
+    @DisconfUpdateService(confFileKeys = {"autoconfig.properties", "autoconfig2.properties"})
+    public class AutoServiceCallback implements IDisconfUpdate {
+    
+        protected static final Logger LOGGER = LoggerFactory.getLogger(AutoServiceCallback.class);
+    
+        @Autowired
+        private AutoService autoService;
+    
+        @Override
+        public void reload() throws Exception {
+    
+            LOGGER.info("reload callback " + "autoconfig.properties or autoconfig2.properties" + autoService.getAuto());
+    
+        }
+    }
