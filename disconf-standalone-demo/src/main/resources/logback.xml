@@ -32,6 +32,10 @@
         <level value="DEBUG"/>
     </logger>
 
+    <logger name="com.github.knightliao.apollo">
+        <level value="DEBUG"/>
+    </logger>
+
     <logger name="com.baidu.disconf.demo">
         <level value="INFO"/>
         <appender-ref ref="logfile"/>

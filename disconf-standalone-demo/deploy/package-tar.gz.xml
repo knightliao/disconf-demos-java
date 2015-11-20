@@ -21,6 +21,31 @@
             <outputDirectory>lib</outputDirectory>
         </fileSet>
 
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>*.properties</include>
+                <include>*.xml</include>
+            </includes>
+            <outputDirectory>./</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>target</directory>
+            <includes>
+                <include>disconf-standalone-demo.jar</include>
+            </includes>
+            <outputDirectory>./</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>deploy</directory>
+            <includes>
+                <include>start.sh</include>
+            </includes>
+            <outputDirectory>./</outputDirectory>
+        </fileSet>
+
     </fileSets>
 
     <dependencySets>
