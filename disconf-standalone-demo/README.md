@@ -203,3 +203,22 @@ com.example.disconf.demo.config.Coefficients.discount
     
         }
     }
+
+## Run 打包、部署、运行
+
+### 打包
+
+mvn package
+
+### 运行
+
+sh start.sh
+
+即：
+        
+    java -Dlogback.configurationFile=logback.xml \
+        -Djava.ext.dirs=lib \
+        -Xms128M -Xmx256M -cp .:disconf-standalone-demo.jar \
+        com.example.disconf.demo.DisconfDemoMain
+        
+记得将 当前路径加到 -cp 的参数里，否则会报classpath找不到的错误。

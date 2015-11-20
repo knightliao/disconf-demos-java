@@ -135,17 +135,17 @@ disconf.xml
 
 file:autoconfig.properties
 
-### Run 打包、部署、运行
+## Run 打包、部署、运行
 
-#### war 包式
+### war 包式
 
 只要修改下pom.xml，使用war进行打包，然后放到tomcat下运行即可。
 
-#### Jar 包式
+### Jar 包式
 
 微服务的一个重要特征就是不需要tomcat了，一个jar就可以运行。这可能是未来的趋势。因此demo演示了 Jar包运行方式。
 
-##### 打包
+#### 打包
 
 mvn package
 
@@ -156,7 +156,7 @@ mvn package
     disconf-spring-boot-web-1.0.0.jar          generated-sources                          maven-status
     ➜  disconf-spring-boot-web git:(master) ✗
 
-##### 运行
+#### 运行
 
     cd target
     java -jar disconf-spring-boot-web-1.0.0.jar
