@@ -23,7 +23,7 @@
           class="com.baidu.disconf.client.addons.properties.ReloadablePropertiesFactoryBean">
         <property name="locations">
             <list>
-                <value>file:./config/autoconfig.properties</value>
+                <value>file:autoconfig.properties</value>
             </list>
         </property>
     </bean>
