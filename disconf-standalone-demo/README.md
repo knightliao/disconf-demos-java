@@ -62,6 +62,35 @@ com.example.disconf.demo.config.Coefficients.discount
     - SimpleRedisServiceUpdateCallback
     - TestXmlConfigCallback: XML的回调函数
 
+示例：
+
+    /**
+     * 更新Redis配置时的回调函数
+     *
+     * @author liaoqiqi
+     * @version 2014-6-17
+     */
+    @Service
+    @Scope("singleton")
+    @DisconfUpdateService(classes = {JedisConfig.class}, itemKeys = {Coefficients.key})
+    public class SimpleRedisServiceUpdateCallback implements IDisconfUpdate {
+    
+        protected static final Logger LOGGER = LoggerFactory.getLogger(SimpleRedisServiceUpdateCallback.class);
+    
+        @Autowired
+        private SimpleRedisService simpleRedisService;
+    
+        /**
+         *
+         */
+        public void reload() throws Exception {
+    
+            simpleRedisService.changeJedis();
+        }
+    
+    }
+
+
 #### 第三步：使用起来
 
 看这里 com.example.disconf.demo.task.DisconfDemoTask
