@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
  */
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan(basePackages = {"com.baidu", "com.example"})
+@ComponentScan(basePackages = {"com.example"})
 @PropertySource({"classpath:application.properties"})
 @ImportResource({"classpath:disconf.xml"})//引入disconf
 public class Application extends SpringBootServletInitializer {

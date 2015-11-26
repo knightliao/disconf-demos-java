@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <context:component-scan base-package="com.baidu,com.example"/>
+    <context:component-scan base-package="com.example"/>
 
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
@@ -28,23 +28,29 @@
                 <value>classpath*:/static.properties</value>
             </list>
         </property>
+        <property name="propertiesArray">
+            <list>
+                <ref bean="configproperties_no_reloadable_disconf"/>
+            </list>
+        </property>
     </bean>
 
-    <!-- 非托管的配置文件 disconf只负责推送 不会注入到代码里 -->
-    <bean id="disconfMgrJustHostFileBean"
-          class="com.baidu.disconf.client.mybeans.DisconfMgrJustHostFileBean">
-        <property name="justHostFiles">
+    <!-- 使用托管方式的disconf配置(无代码侵入, 配置更改不会自动reload)-->
+    <bean id="configproperties_no_reloadable_disconf"
+          class="com.baidu.disconf.client.addons.properties.ReloadablePropertiesFactoryBean">
+        <property name="locations">
             <list>
                 <value>myserver.properties</value>
             </list>
         </property>
     </bean>
+
     <bean id="disconfMgrBean" class="com.baidu.disconf.client.DisconfMgrBean"
-          destroy-method="destory">
+          destroy-method="destroy">
         <property name="scanPackage" value="com.example.disconf.demo"/>
     </bean>
     <bean id="disconfMgrBean2" class="com.baidu.disconf.client.DisconfMgrBeanSecond"
-          init-method="init" destroy-method="destory">
+          init-method="init" destroy-method="destroy">
     </bean>
 
     <!-- 非托管的配置文件 disconf只负责推送 不会注入到代码里 -->
@@ -56,6 +62,7 @@
             </list>
         </property>
     </bean>
+
 
     <import resource="classpath*:dubbo-provider.xml"/>
 
