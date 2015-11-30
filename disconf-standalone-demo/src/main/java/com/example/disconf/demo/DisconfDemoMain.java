@@ -31,7 +31,7 @@ public class DisconfDemoMain {
         contextInitialized();
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(fn);
 
-        DisconfDemoTask task = (DisconfDemoTask) ctx.getBean("disconfDemoTask", DisconfDemoTask.class);
+        DisconfDemoTask task = ctx.getBean("disconfDemoTask", DisconfDemoTask.class);
 
         int ret = task.run();
 

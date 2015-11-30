@@ -1,6 +1,5 @@
 package com.example.disconf.service;
 
-import com.example.disconf.config.SimpleConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.DisposableBean;
@@ -9,13 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import com.example.disconf.config.SimpleConfig;
+
 @Service
 @Scope("singleton")
 public class SimpleDemoService implements InitializingBean, DisposableBean {
 
     protected static final Logger LOGGER = LoggerFactory
             .getLogger(SimpleDemoService.class);
-
 
     /**
      * 分布式配置
@@ -44,7 +44,7 @@ public class SimpleDemoService implements InitializingBean, DisposableBean {
      */
     public void changeConfig() {
 
-        LOGGER.info("start to change hosts to: " + simpleConfig.getHost() + " : " + simpleConfig.getPort());
+        LOGGER.info("start to change hosts to: {} : {}", simpleConfig.getHost(), simpleConfig.getPort());
 
         LOGGER.info("change ok.");
     }

@@ -57,36 +57,32 @@ public class DisconfDemoTask {
                 // service demo
                 //
 
-                LOGGER.info("baobao--baifa: " + baoBaoService.calcBaiFa());
-                LOGGER.info("baobao--yuerbao: " + baoBaoService.calcYuErBao());
+                LOGGER.info("baobao--baifa: {}", baoBaoService.calcBaiFa());
+                LOGGER.info("baobao--yuerbao: {}", baoBaoService.calcYuErBao());
 
                 Thread.sleep(5000);
 
-                LOGGER.info("redis( " + jedisConfig.getHost() + "," + jedisConfig.getPort() + ")  get " +
-                                "key: " + REDIS_KEY +
-                                " , "
-                        // + simpleRedisService.getKey(REDIS_KEY)
-                );
+                LOGGER.info("redis( {} , {} ) get key : {}", jedisConfig.getHost(), jedisConfig.getPort(),
+                        REDIS_KEY);
 
-                LOGGER.info("redis( " + jedisConfig.getHost() + "," + jedisConfig.getPort() + ")");
+                LOGGER.info("redis( {} , {} )", jedisConfig.getHost(), jedisConfig.getPort());
 
-                LOGGER.info("code config: " + codeConfig.getCodeError());
+                LOGGER.info("code config: {}", codeConfig.getCodeError());
 
                 //
                 // xml demo
                 //
 
-                LOGGER.info("autoservice: " + autoService.getAuto());
+                LOGGER.info("autoservice: {}", autoService.getAuto());
 
-                LOGGER.info("autoservice2: " + autoService2.getAuto2());
+                LOGGER.info("autoservice2: {}", autoService2.getAuto2());
 
                 //
                 // static config demo
                 //
+                LOGGER.info("static file data: {}", SimpleStaticService.getStaticFileData());
 
-                LOGGER.info("static file data:" + SimpleStaticService.getStaticFileData());
-
-                LOGGER.info("static item data:" + SimpleStaticService.getStaticItem());
+                LOGGER.info("static item data: {}", SimpleStaticService.getStaticItem());
 
             }
 
