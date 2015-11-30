@@ -8,8 +8,7 @@
 
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%date [%thread] %-5level %logger{80} - %msg%n
-            </pattern>
+            <pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -19,12 +18,10 @@
         <File>${log.base}.log</File>
         <rollingPolicy
                 class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${log.base}.%d{yyyy-MM-dd}.log
-            </FileNamePattern>
+            <FileNamePattern>${log.base}.%d{yyyy-MM-dd}.log</FileNamePattern>
         </rollingPolicy>
         <encoder>
-            <pattern>%date [%thread] %-5level %logger{80} - %msg%n
-            </pattern>
+            <pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
         </encoder>
     </appender>
 

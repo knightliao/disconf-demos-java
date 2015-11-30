@@ -8,8 +8,7 @@
 
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%date [%thread] %-5level %logger{80} - %msg%n
-            </pattern>
+            <pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -23,16 +22,11 @@
             </FileNamePattern>
         </rollingPolicy>
         <encoder>
-            <pattern>%date [%thread] %-5level %logger{80} - %msg%n
-            </pattern>
+            <pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
         </encoder>
     </appender>
 
     <logger name="com.baidu.disconf">
-        <level value="DEBUG"/>
-    </logger>
-
-    <logger name="com.github.knightliao.apollo">
         <level value="DEBUG"/>
     </logger>
 
