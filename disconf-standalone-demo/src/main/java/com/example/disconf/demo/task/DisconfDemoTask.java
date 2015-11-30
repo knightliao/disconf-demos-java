@@ -1,5 +1,7 @@
 package com.example.disconf.demo.task;
 
+import java.text.MessageFormat;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,10 +62,10 @@ public class DisconfDemoTask {
                 LOGGER.info("baobao--baifa: {}", baoBaoService.calcBaiFa());
                 LOGGER.info("baobao--yuerbao: {}", baoBaoService.calcYuErBao());
 
-                Thread.sleep(5000);
+                //Thread.sleep(5000);
 
-                LOGGER.info("redis( {} , {} ) get key : {}", jedisConfig.getHost(), jedisConfig.getPort(),
-                        REDIS_KEY);
+                LOGGER.info(MessageFormat.format("redis( {0} , {1,number,#} ) get key : {2}", jedisConfig.getHost(),
+                        jedisConfig.getPort(), REDIS_KEY));
 
                 LOGGER.info("redis( {} , {} )", jedisConfig.getHost(), jedisConfig.getPort());
 
