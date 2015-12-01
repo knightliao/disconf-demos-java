@@ -62,7 +62,7 @@ public class DisconfDemoTask {
                 LOGGER.info("baobao--baifa: {}", baoBaoService.calcBaiFa());
                 LOGGER.info("baobao--yuerbao: {}", baoBaoService.calcYuErBao());
 
-                //Thread.sleep(5000);
+                Thread.sleep(5000);
 
                 LOGGER.info(MessageFormat.format("redis( {0} , {1,number,#} ) get key : {2}", jedisConfig.getHost(),
                         jedisConfig.getPort(), REDIS_KEY));
