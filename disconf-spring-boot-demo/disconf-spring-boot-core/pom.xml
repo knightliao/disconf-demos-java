@@ -17,17 +17,7 @@
         <dependency>
             <groupId>com.baidu.disconf</groupId>
             <artifactId>disconf-client</artifactId>
-            <version>2.6.30</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-classic</artifactId>
-                </exclusion>
-            </exclusions>
+            <version>2.6.31-SNAPSHOT</version>
         </dependency>
 
         <dependency>
