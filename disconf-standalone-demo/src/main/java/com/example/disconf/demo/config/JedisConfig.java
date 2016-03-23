@@ -58,7 +58,6 @@ public class JedisConfig implements IDisconfUpdate {
         this.port = port;
     }
 
-    @Override
     public void reload() throws Exception {
         LOGGER.info("host: " + host);
     }
