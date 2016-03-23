@@ -159,7 +159,7 @@ mvn package
 #### 运行
 
     cd target
-    java -jar disconf-spring-boot-web-1.0.0.jar
+    java -cp . -jar disconf-spring-boot-web-1.0.0.jar
     
 结果
 
