@@ -1,5 +1,8 @@
 package com.example.disconf.demo.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.baidu.disconf.client.common.annotations.DisconfFile;
 import com.baidu.disconf.client.common.annotations.DisconfFileItem;
 
@@ -12,6 +15,8 @@ import com.baidu.disconf.client.common.annotations.DisconfFileItem;
 @DisconfFile(filename = "static.properties")
 public class StaticConfig {
 
+    protected static final Logger LOGGER = LoggerFactory.getLogger(StaticConfig.class);
+
     private static int staticVar;
 
     @DisconfFileItem(name = "staticVar", associateField = "staticVar")
@@ -21,6 +26,7 @@ public class StaticConfig {
 
     public static void setStaticVar(int staticVar) {
         StaticConfig.staticVar = staticVar;
+        LOGGER.info("i' m here: setting static class variable");
     }
 
 }

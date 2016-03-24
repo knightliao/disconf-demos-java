@@ -56,6 +56,7 @@ public class JedisConfig implements IDisconfUpdate {
 
     public void setPort(int port) {
         this.port = port;
+        LOGGER.info("i' m here: setting redis port");
     }
 
     public void reload() throws Exception {

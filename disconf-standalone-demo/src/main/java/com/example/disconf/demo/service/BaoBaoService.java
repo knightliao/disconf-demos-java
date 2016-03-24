@@ -61,6 +61,7 @@ public class BaoBaoService {
 
     public void setMoneyInvest(Double moneyInvest) {
         this.moneyInvest = moneyInvest;
+        LOGGER.info("i' m here: setting moneyInvest");
     }
 
 }
