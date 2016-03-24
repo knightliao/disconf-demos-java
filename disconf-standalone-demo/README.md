@@ -114,7 +114,6 @@ com.example.disconf.demo.config.Coefficients.discount
 
 - myserver.properties
 
-
     <!-- 使用托管方式的disconf配置(无代码侵入, 配置更改会自动reload)-->
     <bean id="configproperties_disconf"
           class="com.baidu.disconf.client.addons.properties.ReloadablePropertiesFactoryBean">
