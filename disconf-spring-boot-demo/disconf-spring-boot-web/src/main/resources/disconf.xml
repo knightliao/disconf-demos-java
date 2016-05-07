@@ -23,7 +23,7 @@
           class="com.baidu.disconf.client.addons.properties.ReloadablePropertiesFactoryBean">
         <property name="locations">
             <list>
-                <value>file:autoconfig.properties</value>
+                <value>classpath*:autoconfig.properties</value>
             </list>
         </property>
     </bean>
@@ -41,7 +41,7 @@
 
 
     <bean id="autoService" class="com.example.disconf.config.AutoService">
-        <property name="auto" value="${auto=100}"/>
+        <property name="auto" value="${auto}"/>
     </bean>
 
 </beans>

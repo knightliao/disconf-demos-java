@@ -46,7 +46,7 @@ disconf.xml
           class="com.baidu.disconf.client.addons.properties.ReloadablePropertiesFactoryBean">
         <property name="locations">
             <list>
-                <value>file:autoconfig.properties</value>
+                <value>classpath*:autoconfig.properties</value>
             </list>
         </property>
     </bean>
@@ -133,7 +133,7 @@ disconf.xml
 
 #### XML 分布式配置
 
-file:autoconfig.properties
+classpath*:autoconfig.properties
 
 ## Run 打包、部署、运行
 
@@ -159,7 +159,7 @@ mvn package
 #### 运行
 
     cd target
-    java -cp . -jar disconf-spring-boot-web-1.0.0.jar
+    java -jar disconf-spring-boot-web-1.0.0.jar
     
 结果
 
