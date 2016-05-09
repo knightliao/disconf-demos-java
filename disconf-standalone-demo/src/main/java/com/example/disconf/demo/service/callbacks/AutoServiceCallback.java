@@ -23,7 +23,6 @@ public class AutoServiceCallback implements IDisconfUpdate {
     @Autowired
     private AutoService autoService;
 
-    @Override
     public void reload() throws Exception {
 
         LOGGER.info("reload callback " + "autoconfig.properties or autoconfig2.properties" + autoService.getAuto());
