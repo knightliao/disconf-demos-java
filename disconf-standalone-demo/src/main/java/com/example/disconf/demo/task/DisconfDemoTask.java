@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.baidu.disconf.client.usertools.DisconfDataGetter;
 import com.example.disconf.demo.config.CodeConfig;
 import com.example.disconf.demo.config.JedisConfig;
 import com.example.disconf.demo.service.AutoService;
@@ -86,6 +87,14 @@ public class DisconfDemoTask {
 
                 LOGGER.info("static item data: {}", SimpleStaticService.getStaticItem());
 
+                //
+                // 动态的写法
+                //
+                LOGGER.info(DisconfDataGetter.getByFile("redis.properties").toString());
+                LOGGER.info(DisconfDataGetter.getByFile("autoconfig.properties").toString());
+                LOGGER.info(DisconfDataGetter.getByFile("autoconfig.properties").get("auto").toString());
+                LOGGER.info(DisconfDataGetter.getByFileItem("autoconfig.properties", "auto").toString());
+                LOGGER.info(DisconfDataGetter.getByItem("moneyInvest").toString());
             }
 
         } catch (Exception e) {
