@@ -161,4 +161,22 @@
         </plugins>
     </build>
 
+    <profiles>
+        <!-- 开发环境默认激活的profile -->
+        <profile>
+            <id>rd</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <resources>
+                    <!-- 指定环境差异配置的配置文件所在目录 -->
+                    <resource>
+                        <directory>${basedir}/profile/rd</directory>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+    </profiles>
+
 </project>
