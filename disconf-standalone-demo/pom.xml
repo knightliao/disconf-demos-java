@@ -86,78 +86,45 @@
         </resources>
 
         <plugins>
-
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.1</version>
-                <configuration>
-                    <failOnError>true</failOnError>
-                    <showDeprecation>true</showDeprecation>
-                    <showWarnings>true</showWarnings>
-                    <compilerArguments>
-                        <verbose/>
-                        <bootclasspath>${java.home}/lib/rt.jar</bootclasspath>
-                    </compilerArguments>
-                </configuration>
-
-                <dependencies>
-                    <dependency>
-                        <groupId>org.codehaus.plexus</groupId>
-                        <artifactId>plexus-compiler-javac</artifactId>
-                        <version>1.8.1</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <excludes>
-                        <exclude>*.properties</exclude>
-                        <exclude>**/*.properties</exclude>
-                        <exclude>conf/**</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.3</version>
+                <groupId>com.github.knightliao.plugin</groupId>
+                <artifactId>starter-shade-maven-plugin</artifactId>
+                <version>1.0.0</version>
                 <executions>
-
                     <execution>
-                        <id>make-jar</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>single</goal>
+                            <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <appendAssemblyId>false</appendAssemblyId>
-                            <descriptors>
-                                <descriptor>deploy/package-jar.xml</descriptor>
-                            </descriptors>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>make-tar.gz</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <configuration>
-                            <appendAssemblyId>false</appendAssemblyId>
-                            <descriptors>
-                                <descriptor>deploy/package-tar.gz.xml</descriptor>
-                            </descriptors>
+                            <finalName>${project.build.finalName}</finalName>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.example.disconf.demo.DisconfDemoMain</mainClass>
+                                </transformer>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.DontIncludeResourceTransformer">
+                                    <resources>
+                                        <resource>env</resource>
+                                        <resource>disconf.properties</resource>
+                                        <resource>logback.xml</resource>
+                                    </resources>
+                                </transformer>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/spring.handlers</resource>
+                                </transformer>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                    <resource>META-INF/spring.schemas</resource>
+                                </transformer>
+                            </transformers>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 
