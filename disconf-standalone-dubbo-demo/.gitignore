@@ -8,3 +8,4 @@
 /bin
 /disconf-standalone-dubbo-demo.iml
 .idea
+dependency-reduced-pom.xml
