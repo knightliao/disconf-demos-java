@@ -207,17 +207,23 @@ com.example.disconf.demo.config.Coefficients.discount
 
 ### 打包
 
-mvn package
+mvn clean package
 
 ### 运行
 
-sh start.sh
+    ➜  disconf-standalone-demo git:(dev) ✗ cd target/starter-run
+    ➜  starter-run git:(dev) ✗ ll
+    total 42680
+    -rw-r--r--  1 knightliao  staff  21831639  6  8 14:36 disconf-standalone-demo.jar
+    -rw-r--r--  1 knightliao  staff      1431  6  8 14:36 disconf.properties
+    -rw-r--r--  1 knightliao  staff       417  6  8 14:36 env
+    -rw-r--r--  1 knightliao  staff      1493  6  8 14:36 logback.xml
+    -rw-r--r--  1 knightliao  staff      1037  6  8 14:36 start.sh
+    -rw-r--r--  1 knightliao  staff       532  6  8 14:36 stop.sh
 
-即：
-        
-    java -Dlogback.configurationFile=logback.xml \
-        -Djava.ext.dirs=lib \
-        -Xms128M -Xmx256M -cp .:disconf-standalone-demo.jar \
-        com.example.disconf.demo.DisconfDemoMain
-        
-记得将 当前路径加到 -cp 的参数里，否则会报classpath找不到的错误。
+    ➜  starter-run git:(dev) ✗ sh start.sh
+    nohup java  -server -Xms1024m -Xmx1024m -Xmn448m -Xss256K -XX:MaxPermSize=128m -XX:ReservedCodeCacheSize=64m -XX:+UseParallelGC -XX:+UseParallelOldGC -XX:ParallelGCThreads=2 -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Dlogback.configurationFile=file:logback.xml -jar disconf-standalone-demo.jar  >> log_1465367799.log 2>&1 &
+    ➜  starter-run git:(dev) ✗ tail -f log_1465367799.log
+        disConfCommonModel=DisConfCommonModel [app=disconf_demo, version=1_0_0_0, env=rd]
+        disconfCommonCallbackModel=DisconfCommonCallbackModel{disconfConfUpdates=[com.example.disconf.demo.service.callbacks.SimpleRedisServiceUpdateCallback@50b7ae59], disconfUpdatesActiveBackups=[]}]]
+            
