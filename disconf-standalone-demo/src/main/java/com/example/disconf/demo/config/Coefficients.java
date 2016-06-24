@@ -64,4 +64,5 @@ public class Coefficients {
     public void setDiscount(Double discount) {
         this.discount = discount;
     }
+
 }

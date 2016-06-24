@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.baidu.disconf.client.usertools.DisconfDataGetter;
+import com.example.disconf.demo.config.AutoConfig;
 import com.example.disconf.demo.config.CodeConfig;
 import com.example.disconf.demo.config.JedisConfig;
 import com.example.disconf.demo.service.AutoService;
@@ -46,6 +47,9 @@ public class DisconfDemoTask {
     private CodeConfig codeConfig;
 
     private static final String REDIS_KEY = "disconf_key";
+
+    @Autowired
+    private AutoConfig autoConfig;
 
     /**
      *
@@ -95,6 +99,8 @@ public class DisconfDemoTask {
                 LOGGER.info(DisconfDataGetter.getByFile("autoconfig.properties").get("auto").toString());
                 LOGGER.info(DisconfDataGetter.getByFileItem("autoconfig.properties", "auto").toString());
                 LOGGER.info(DisconfDataGetter.getByItem("moneyInvest").toString());
+
+                LOGGER.info("get bean @value : {}", autoConfig.getAuto());
             }
 
         } catch (Exception e) {
