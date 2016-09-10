@@ -12,4 +12,5 @@ several demos for disconf java client.
 
 ### disconf home page
 
-https://github.com/knightliao/disconf
+- src: https://github.com/knightliao/disconf
+- doc: http://disconf.readthedocs.io/
