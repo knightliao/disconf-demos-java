@@ -9,7 +9,7 @@ import com.baidu.disconf.client.common.annotations.DisconfFileItem;
  * Created by knightliao on 15/1/7.
  */
 @Service
-@DisconfFile(filename = "code.properties", copy2TargetDirPath = "disconf")
+@DisconfFile(filename = "code.properties", targetDirPath = "disconf")
 public class CodeConfig {
 
     private String codeError = "";

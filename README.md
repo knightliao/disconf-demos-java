@@ -9,7 +9,7 @@ several demos for disconf java client.
 - [disconf-standalone-dubbo-demo](https://github.com/knightliao/disconf-demos-java/tree/master/disconf-standalone-dubbo-demo): 集成了disconf和dubbo的基于Spring的standalone demo程序
 - [disconf-spring-boot-demo](https://github.com/knightliao/disconf-demos-java/tree/master/disconf-spring-boot-demo): 使用disconf的spring-boot demo程序,更少的配置
 
-
 ### disconf home page
 
-https://github.com/knightliao/disconf
+- src: https://github.com/knightliao/disconf
+- doc: http://disconf.readthedocs.io/

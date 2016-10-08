@@ -96,8 +96,12 @@ public class DisconfDemoTask {
                 //
                 LOGGER.info(DisconfDataGetter.getByFile("redis.properties").toString());
                 LOGGER.info(DisconfDataGetter.getByFile("autoconfig.properties").toString());
-                LOGGER.info(DisconfDataGetter.getByFile("autoconfig.properties").get("auto").toString());
-                LOGGER.info(DisconfDataGetter.getByFileItem("autoconfig.properties", "auto").toString());
+                if (DisconfDataGetter.getByFile("autoconfig.properties").containsKey("auto")) {
+                    LOGGER.info(DisconfDataGetter.getByFile("autoconfig.properties").get("auto").toString());
+                }
+                if (DisconfDataGetter.getByFileItem("autoconfig.properties", "auto") != null) {
+                    LOGGER.info(DisconfDataGetter.getByFileItem("autoconfig.properties", "auto").toString());
+                }
                 LOGGER.info(DisconfDataGetter.getByItem("moneyInvest").toString());
 
                 LOGGER.info("get bean @value : {}", autoConfig.getAuto());
