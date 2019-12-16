@@ -36,11 +36,11 @@ public class DisconfDemoMain {
         DisconfDemoTask task = ctx.getBean("disconfDemoTask", DisconfDemoTask.class);
 
         int ret = task.run();
-        
+        System.out.println("start");
         new Profiler.Builder()
            .profilingGroupName("test")
-           .build().start()
-
+           .build().start();
+        System.out.println("end");
         System.exit(ret);
     }
 }
