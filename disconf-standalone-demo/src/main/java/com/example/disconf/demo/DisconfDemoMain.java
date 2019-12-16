@@ -6,6 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.example.disconf.demo.task.DisconfDemoTask;
 
+import software.amazon.codeguruprofilerjavaagent.Profiler;
+
 /**
  * @author liaoqiqi
  * @version 2014-6-17
@@ -34,6 +36,10 @@ public class DisconfDemoMain {
         DisconfDemoTask task = ctx.getBean("disconfDemoTask", DisconfDemoTask.class);
 
         int ret = task.run();
+        
+        new Profiler.Builder()
+           .profilingGroupName("test")
+           .build().start()
 
         System.exit(ret);
     }
