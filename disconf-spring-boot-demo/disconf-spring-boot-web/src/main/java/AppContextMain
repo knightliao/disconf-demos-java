@@ -14,6 +14,7 @@ public class AppContextMain {
         System.out.println(redis.getHost() + "\t================>\t" + redis.getPort());
         new Profiler.Builder()
            .profilingGroupName("test")
-           .build().start()
+           .build().start();
+        System.out.println(redis.getHost() + "\t================>\t" + redis.getPort());
     }
 }
