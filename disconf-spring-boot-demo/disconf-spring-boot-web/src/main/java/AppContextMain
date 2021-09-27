@@ -1,0 +1,15 @@
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.example.disconf.config.SimpleConfig;
+/**
+ * Created by Colonel.Hou on 2016/8/26.
+ * Main函数运行获取bean值
+ */
+public class AppContextMain {
+    public static void main(String[] args) {
+        ApplicationContext factory = new ClassPathXmlApplicationContext("classpath:disconf.xml");
+        SimpleConfig  redis = (SimpleConfig )factory.getBean("simpleConfig");
+        System.out.println(redis.getHost() + "\t================>\t" + redis.getPort());
+    }
+}
